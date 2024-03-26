@@ -1,0 +1,47 @@
+.main_container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.calendar_container {
+    max-width: 1215px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.days_container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 14px;
+    overflow-x: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.slider_buttons {
+    display: flex;
+    width: 26px;
+    height: 64px;
+    border-radius: 8px;
+    border: 1px solid #8F8F8F;
+}
+
+.slider_buttons button {
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.days_boxes {
+    display: flex;
+    min-width: 29px;
+    min-height: 59px;
+    border: 2px solid black;
+    margin-left: 5px;
+}

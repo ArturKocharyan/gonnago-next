@@ -1,0 +1,12 @@
+.main_container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.footer_container {
+    display: flex;
+    max-width: 1215px;
+    width: 100%;
+    flex-direction: column;;
+}

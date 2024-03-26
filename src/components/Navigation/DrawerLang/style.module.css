@@ -1,0 +1,32 @@
+.mainContainer {
+    display: flex;
+    width: 100%;
+}
+.btn {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    text-transform: capitalize;
+    margin-left: 16px;
+    margin-top: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    
+}
+
+.itemDiv {
+    display: flex;
+    height: 30px;
+    font-size: larger;
+    cursor: pointer;
+}
+
+.checked {
+    display: flex;
+    margin-left: 10px;
+    margin-top: 4px;
+}
+
+.notChecked {
+    display: none;
+}

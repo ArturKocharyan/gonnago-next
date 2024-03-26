@@ -1,0 +1,91 @@
+.mainContainerNav {
+    width: 100%;
+    background-color: #6e64ac;
+    margin-top: 23px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 72px;
+    font-family: Montserrat arm;
+    height: 82px;
+}
+
+.navMenu {
+    max-width: 1215px;
+    width: 100%;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+    overflow-x: auto;
+}
+.navMenu::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+.menuItems {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 12px;
+    position: relative;
+    height: 40px;
+    width: 118px;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+}
+
+.menuSpan {
+    display: none;
+}
+
+.selectItem { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 12px;
+    position: relative;
+    background-color: #9BA8E1;
+    height: 40px;
+    width: 118px;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+}
+
+.selectMenuSpan {
+    transform: translateX(50%);
+    width: 0;
+    height: 0;
+    border-left: 18.5px solid transparent;
+    border-right: 18.5px solid transparent;
+    border-top: 10px solid #9BA8E1;
+    margin-left: 18%;
+}
+
+.link_style {
+    text-decoration: none;
+    color: inherit;
+}
+
+.menuDivs {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.navCategories {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+@media screen and (max-width: 876px) {
+}
