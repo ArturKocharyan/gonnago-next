@@ -27,7 +27,7 @@
     line-height: 22.54px;
     text-align: left;
     list-style: none;
-    margin-left: 0;
+    margin-left:-39px;
 }
 
 .contacts_lu li ::marker {

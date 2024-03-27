@@ -8,8 +8,8 @@ import { BsChevronDown } from "react-icons/bs";
 import { AiOutlineCheck } from "react-icons/ai";
 import headerCities from "../../../assets/staticCities";
 import useGroupByFirstLetter from "../../../hooks/useGroupByFirstLetter";
-import { useDispatch } from "react-redux";
-import { setSelectedCityTitle } from "@/redux/slices/citySlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedCity, setSelectedCityTitle } from "@/redux/slices/citySlice";
 
 function CitesDropDown({ list }) {
   const [inputValue, setInputValue] = useState("");
@@ -19,6 +19,7 @@ function CitesDropDown({ list }) {
   const dispatch = useDispatch()
   const citiesData = list.cities.data;
   const groupedCities = useGroupByFirstLetter(citiesData);
+  const cityTitle = useSelector((state) => state.city.selectedCity)
 
   const filteredCities = Object.entries(groupedCities).reduce(
     (acc, [letter, cities]) => {
@@ -81,6 +82,7 @@ function CitesDropDown({ list }) {
                         setTitle(item.title);
                         setVisible(false);
                         dispatch(setSelectedCityTitle(item.alias))
+                        dispatch(setSelectedCity(item.title)) 
                       }}
                       className={item.title === title ? style.headerDivsCheck : style.headerDivs}
                       key={item.id}
@@ -102,6 +104,7 @@ function CitesDropDown({ list }) {
                         setTitle(city.title);
                         setVisible(false);
                         dispatch(setSelectedCityTitle(city.alias))
+                        dispatch(setSelectedCity(city.title)) 
                       }}
                       style={{ cursor: "pointer", marginTop: "2px" }}
                       key={city.id}
@@ -119,7 +122,7 @@ function CitesDropDown({ list }) {
         onOpenChange={setVisible}
       >
         <div className={style.citiesBtn}>
-          {title}
+          {cityTitle}
           <span>
             <BsChevronDown />
           </span>

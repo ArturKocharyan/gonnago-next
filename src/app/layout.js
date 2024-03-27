@@ -22,14 +22,13 @@ export default function RootLayout({ children }) {
           <header>
             <Navigation />
           </header>
-            <Menu />
+          <Menu />
           {children}
           <footer>
             <Footer />
           </footer>
         </StoreProvider>
       </body>
-
     </html>
   );
 }
