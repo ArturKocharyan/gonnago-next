@@ -7,22 +7,31 @@
     margin-bottom: 22px;
 }
 
-.ul_style ul li:first-child {
+.contacts_lu {
+    margin-left: 5px;
+}
+
+.contacts_lu li:first-child {
     color: #191d23;
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: 19.5px;
     margin-bottom: 15px;
+    list-style: none;
 }
 
-.ul_style {
+.contacts_lu li {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22.54px;
+    text-align: left;
+    list-style: none;
+    margin-left: 0;
+}
 
-font-size: 14px;
-font-weight: 400;
-line-height: 22.54px;
-text-align: left;
-
+.contacts_lu li ::marker {
+    display: none;
 }
 
 .social{

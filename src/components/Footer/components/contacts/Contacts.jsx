@@ -7,7 +7,7 @@ import FaceBook from "../../../../assets/logos/FaceBook";
 function Contacts() {
     return (
         <div className={style.main_container} >
-                <ul className={style.ul_style} >
+                <ul className={style.contacts_lu} >
                     <li>GonnaGo </li>
                     <li>Մեր մասին</li>
                     <li>ՀՏՀ</li>
@@ -15,17 +15,17 @@ function Contacts() {
                     <li>Օգտվելու կանոններ</li>
                     <li>Տոմսերի վերադարձ </li>
                 </ul>
-                <ul>
+                <ul className={style.contacts_lu}  >
                     <li>Գործընկերներ և Կազմակերպիչներ</li>
                     <li>Միջոցառումների կազմակերպիչների համար</li>
                     <li>Կորպորատիվ հաճախորդների համար</li>
                 </ul>
-                <ul>
+                <ul className={style.contacts_lu}  > 
                     <li>հեռ. և էլ. հասցե</li>
                     <li>+374 99 15 16 17</li>
                     <li>Կորպորատիվ հաճախորդների համար</li>
                 </ul>
-                <ul>
+                <ul className={style.contacts_lu}  >
                     <li>Հետադարձ կապ</li>
                     <div className={style.social} >
                     <Instagram />

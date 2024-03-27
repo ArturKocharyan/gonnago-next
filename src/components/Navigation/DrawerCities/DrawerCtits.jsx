@@ -7,6 +7,8 @@ import { BsChevronDown } from "react-icons/bs";
 import { AiOutlineCheck } from "react-icons/ai";
 import headerCities from "../../../assets/staticCities";
 import useGroupByFirstLetter from "../../../hooks/useGroupByFirstLetter";
+import { useDispatch } from "react-redux";
+import { setSelectedCityTitle } from "@/redux/slices/citySlice";
 
 function DrawerCities({ list }) {
     const [open, setOpen] = useState(false);
@@ -14,6 +16,7 @@ function DrawerCities({ list }) {
     const [isActive, setIsActive] = useState(false);
     const [title, setTitle] = useState(headerCities[0].title);
     const citiesData = list.cities.data;
+    const dispatch = useDispatch()
     const groupedCities = useGroupByFirstLetter(citiesData);
 
     const filteredCities = Object.entries(groupedCities).reduce(
@@ -76,6 +79,7 @@ function DrawerCities({ list }) {
                                 onClick={() => {
                                     setTitle(item.title);
                                     setOpen(!open);
+                                    dispatch(setSelectedCityTitle(item.alias))
                                 }}
                                 className={item.title === title ? style.headerDivsCheck : style.headerDivs}
                                 key={item.id}
@@ -94,6 +98,7 @@ function DrawerCities({ list }) {
                                     onClick={() => {
                                         setTitle(city.title);
                                         setOpen(!open);
+                                        dispatch(setSelectedCityTitle(city.alias))
                                     }}
                                     style={{ cursor: "pointer", marginTop: "2px" }}
                                     key={city.id}

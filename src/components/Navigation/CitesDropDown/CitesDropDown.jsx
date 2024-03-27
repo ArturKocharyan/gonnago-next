@@ -8,12 +8,15 @@ import { BsChevronDown } from "react-icons/bs";
 import { AiOutlineCheck } from "react-icons/ai";
 import headerCities from "../../../assets/staticCities";
 import useGroupByFirstLetter from "../../../hooks/useGroupByFirstLetter";
+import { useDispatch } from "react-redux";
+import { setSelectedCityTitle } from "@/redux/slices/citySlice";
 
 function CitesDropDown({ list }) {
   const [inputValue, setInputValue] = useState("");
   const [isActive, setIsActive] = useState(false);
   const [title, setTitle] = useState(headerCities[0].title);
   const [visible, setVisible] = useState(false);
+  const dispatch = useDispatch()
   const citiesData = list.cities.data;
   const groupedCities = useGroupByFirstLetter(citiesData);
 
@@ -33,6 +36,8 @@ function CitesDropDown({ list }) {
   useEffect(() => {
     inputValue.length !== 0 ? setIsActive(true) : setIsActive (false)
   }, [inputValue]);
+
+  
 
   return (
     <div className={style.mainContainer} >
@@ -75,6 +80,7 @@ function CitesDropDown({ list }) {
                       onClick={() => {
                         setTitle(item.title);
                         setVisible(false);
+                        dispatch(setSelectedCityTitle(item.alias))
                       }}
                       className={item.title === title ? style.headerDivsCheck : style.headerDivs}
                       key={item.id}
@@ -95,6 +101,7 @@ function CitesDropDown({ list }) {
                       onClick={() => {
                         setTitle(city.title);
                         setVisible(false);
+                        dispatch(setSelectedCityTitle(city.alias))
                       }}
                       style={{ cursor: "pointer", marginTop: "2px" }}
                       key={city.id}

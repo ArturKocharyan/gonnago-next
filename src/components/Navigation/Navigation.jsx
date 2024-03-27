@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,lazy } from "react";
 import logo from "../../assets/img/image2.svg";
 import search from "../../assets/img/Search2.svg";
 import { RiCloseCircleFill } from "react-icons/ri";
@@ -12,7 +12,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import DrawerLang from "./DrawerLang/DrawerLang";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import DrawerSearch from "./DrawerSearch/DrawerSearch";
-import DrawerCities from "./DrawerCities/DrawerCtits";
+const DrawerCitiesLazy = React.lazy(() => import("./DrawerCities/DrawerCtits"));
 import { getCitiesStatus, getCities } from "../../redux/slices/citiesSlice";
 import Image from "next/image";
 
@@ -23,6 +23,7 @@ function Navigation() {
   const [inputIsEmpty, setInputIsEmpty] = useState(false);
   const citiesList = useSelector((state) => state.cities);
   const [mobailMenu, setMobailMenu] = useState(false);
+  
 
   useEffect(() => {
     if (citiesStatus === "idle") {
@@ -35,7 +36,7 @@ function Navigation() {
   }, [inputValue]);
 
   return (
-    <div className={style.mainContainer}>
+    <header className={style.mainContainer}>
       <div className={style.iconContainer}>
         <div className={style.icon}>
           <Image src={logo} alt="Logo" />
@@ -87,8 +88,7 @@ function Navigation() {
       {mobailMenu === true && (
         <div className={style.menuBody}>
           <div className={style.citiesMenu}>
-            {/* <CitesDropDown list={citiesList} /> */}
-            <DrawerCities list={citiesList} />
+            <DrawerCitiesLazy list={citiesList} />
           </div>
           <div className={style.langMenu}>
             <DrawerLang />
@@ -99,7 +99,7 @@ function Navigation() {
           </div>
         </div>
       )}
-    </div>
+    </header>
   );
 }
 

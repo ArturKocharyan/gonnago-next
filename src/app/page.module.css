@@ -1,4 +1,11 @@
 .main_container {
     display: flex;
+    justify-content: center;
     height: 400px;
+}
+
+.chiled_container {
+    display: flex;
+    max-width: 1215px;
+    width: 100%;
 }

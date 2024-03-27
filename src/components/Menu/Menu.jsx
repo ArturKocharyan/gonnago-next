@@ -16,6 +16,7 @@ function Menu() {
     const dispatch = useDispatch()
     const menuStatus = useSelector(getMenuStatus)
     const elRef = useSmoothScroll();
+    const selectedCity = useSelector((state) => state.city.selectedCityTitle)
 
     useEffect(() => {
         if (menuStatus === 'idle') {
@@ -33,7 +34,7 @@ function Menu() {
 
     return (
         <div>
-            <div className={style.mainContainerNav}>
+            <nav className={style.mainContainerNav}>
                 <div className={style.navMenu} ref={elRef} >
                     {
                         menuItems.menu.data?.map((item) => {
@@ -45,23 +46,23 @@ function Menu() {
                                         setSelectItemId(item.id)
                                         setNavChilds(item.childs)
                                     }}
-                                   
+
                                 >
-                                    <Link  className={style.link_style} href={`/categories/${item.alias}`} >
-                                    <div
-                                        className={selectItemId === item.id ? style.selectItem : style.menuItems}
-                                    >{item.title}
-                                    </div  >
-                                    <div className={style.containerSpan} >
-                                        <div className={selectItemId === item.id ? style.selectMenuSpan : style.menuSpan} />
-                                    </div>
+                                    <Link className={style.link_style} href={`/${selectedCity}/${item.alias}`}>
+                                        <div
+                                            className={selectItemId === item.id ? style.selectItem : style.menuItems}
+                                        >{item.title}
+                                        </div  >
+                                        <div className={style.containerSpan} >
+                                            <div className={selectItemId === item.id ? style.selectMenuSpan : style.menuSpan} />
+                                        </div>
                                     </Link>
                                 </div>
                             )
                         })
                     }
                 </div>
-            </div>
+            </nav>
             <div className={style.navCategories} >
                 <Categories childs={navChilds} />
             </div>

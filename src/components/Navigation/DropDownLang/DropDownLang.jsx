@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import { Menu, Dropdown } from 'antd';
-import { BsChevronDown } from "react-icons/bs";
-import style from './style.module.css'
-
-
+import React, { useState } from 'react';
+import { Menu, Popover } from 'antd';
+import { BsChevronDown } from 'react-icons/bs';
+import style from './style.module.css'; // Assuming you have a CSS module for styles
 
 function DropDownLang() {
-
-    const [lang, setLang] = useState("AM")
+    const [lang, setLang] = useState("AM");
 
     const onClick = ({ key }) => {
         setLang(key);
@@ -23,14 +20,19 @@ function DropDownLang() {
 
     return (
         <div>
-            <Dropdown overlay={menu} trigger={['click']}>
-                <div className={style.down_button} onClick={e => e.preventDefault()}>
-                    <div className={style.test} >{lang}</div>
-                    <div className={style.icon} ><BsChevronDown /></div>
+            <Popover
+                content={menu}
+                trigger="click"
+                placement="bottom"
+                overlayClassName={style.popover}
+            >
+                <div className={style.down_button}>
+                    <div className={style.test}>{lang}</div>
+                    <div className={style.icon}><BsChevronDown /></div>
                 </div>
-            </Dropdown>
+            </Popover>
         </div>
-    )
+    );
 }
 
-export default DropDownLang
+export default DropDownLang;
