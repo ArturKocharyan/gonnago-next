@@ -2,6 +2,12 @@
     display: flex;
     width: 100%;
 }
+
+.link_style {
+ text-decoration: none;
+ color: black;
+}
+
 .citiesContainer {
     width: 420px;
     max-height: 352px;

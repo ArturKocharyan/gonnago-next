@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   selectedCityTitle: "Armenia",
-  selectedCity:"Armenia"
+  selectedCity:"Armenia",
+  selectedMenu:'entertainment'
 };
 
 const citySlice = createSlice({
@@ -14,10 +15,13 @@ const citySlice = createSlice({
     },
     setSelectedCity: (state, action) => {
       state.selectedCity = action.payload;
+    },
+    setSelectedMenu: (state, action) => {
+      state.selectedMenu = action.payload
     }
   },
 });
 
-export const { setSelectedCityTitle, setSelectedCity } = citySlice.actions;
+export const { setSelectedCityTitle, setSelectedCity, setSelectedMenu } = citySlice.actions;
 
 export default citySlice.reducer;

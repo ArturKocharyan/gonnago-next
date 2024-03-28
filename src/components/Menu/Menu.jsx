@@ -7,6 +7,7 @@ import { getMenuStatus, getMenu } from "../../redux/slices/menuSlice";
 import useSmoothScroll from "../../hooks/useSmoothScroll";
 import Link from 'next/link';
 import Categories from "../Categories/Categories";
+import { setSelectedMenu } from "@/redux/slices/citySlice";
 
 function Menu() {
 
@@ -45,6 +46,7 @@ function Menu() {
                                     onClick={() => {
                                         setSelectItemId(item.id)
                                         setNavChilds(item.childs)
+                                        dispatch(setSelectedMenu(item.alias))
                                     }}
 
                                 >

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Drawer } from 'antd';
 import style from "./style.module.css"
 import { BsSearch } from "react-icons/bs";
@@ -7,8 +8,9 @@ import { BsChevronDown } from "react-icons/bs";
 import { AiOutlineCheck } from "react-icons/ai";
 import headerCities from "../../../assets/staticCities";
 import useGroupByFirstLetter from "../../../hooks/useGroupByFirstLetter";
-import { useDispatch } from "react-redux";
 import { setSelectedCityTitle } from "@/redux/slices/citySlice";
+import Link from "next/link";
+
 
 function DrawerCities({ list }) {
     const [open, setOpen] = useState(false);
@@ -18,6 +20,8 @@ function DrawerCities({ list }) {
     const citiesData = list.cities.data;
     const dispatch = useDispatch()
     const groupedCities = useGroupByFirstLetter(citiesData);
+    const cityTitle = useSelector((state) => state.city.selectedCity)
+    const selectedMenu = useSelector((state) => state.city.selectedMenu)
 
     const filteredCities = Object.entries(groupedCities).reduce(
         (acc, [letter, cities]) => {
@@ -84,7 +88,7 @@ function DrawerCities({ list }) {
                                 className={item.title === title ? style.headerDivsCheck : style.headerDivs}
                                 key={item.id}
                             >
-                                <span><AiOutlineCheck /></span>{item.title}
+                                <span><AiOutlineCheck /></span><Link href={`/${item.alias}/${selectedMenu}`} className={style.link_style} >{item.title}</Link>
                             </div>
                         );
                     })}
@@ -103,7 +107,7 @@ function DrawerCities({ list }) {
                                     style={{ cursor: "pointer", marginTop: "2px" }}
                                     key={city.id}
                                 >
-                                    {city.title}
+                                    <Link href={`/${city.alias}/${selectedMenu}`} className={style.link_style}  >{city.title}</Link>
                                 </li>
                             ))}
                         </ul>

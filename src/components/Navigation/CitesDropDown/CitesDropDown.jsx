@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedCity, setSelectedCityTitle } from "@/redux/slices/citySlice";
 import { Popover, Divider } from "antd";
 import style from "./style.module.css";
 import { CgClose } from "react-icons/cg";
@@ -8,8 +10,7 @@ import { BsChevronDown } from "react-icons/bs";
 import { AiOutlineCheck } from "react-icons/ai";
 import headerCities from "../../../assets/staticCities";
 import useGroupByFirstLetter from "../../../hooks/useGroupByFirstLetter";
-import { useDispatch, useSelector } from "react-redux";
-import { setSelectedCity, setSelectedCityTitle } from "@/redux/slices/citySlice";
+import Link from "next/link";
 
 function CitesDropDown({ list }) {
   const [inputValue, setInputValue] = useState("");
@@ -20,6 +21,7 @@ function CitesDropDown({ list }) {
   const citiesData = list.cities.data;
   const groupedCities = useGroupByFirstLetter(citiesData);
   const cityTitle = useSelector((state) => state.city.selectedCity)
+  const selectedMenu = useSelector((state) => state.city.selectedMenu)
 
   const filteredCities = Object.entries(groupedCities).reduce(
     (acc, [letter, cities]) => {
@@ -87,7 +89,7 @@ function CitesDropDown({ list }) {
                       className={item.title === title ? style.headerDivsCheck : style.headerDivs}
                       key={item.id}
                     >
-                      <span><AiOutlineCheck /></span>{item.title}
+                      <span><AiOutlineCheck /></span><Link href={`/${item.alias}/${selectedMenu}`} className={style.link_style} >{item.title}</Link>
                     </div>
                   );
                 })}
@@ -109,7 +111,7 @@ function CitesDropDown({ list }) {
                       style={{ cursor: "pointer", marginTop: "2px" }}
                       key={city.id}
                     >
-                      {city.title}
+                      <Link href={`/${city.alias}/${selectedMenu}`} className={style.link_style}  >{city.title}</Link>
                     </li>
                   ))}
                 </ul>
