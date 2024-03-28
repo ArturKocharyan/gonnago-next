@@ -12,26 +12,18 @@ import { setSelectedMenu } from "@/redux/slices/citySlice";
 function Menu() {
 
     const menuItems = useSelector((state) => state.menu)
-    const [selectItemId, setSelectItemId] = useState(1)
     const [navChilds, setNavChilds] = useState()
     const dispatch = useDispatch()
     const menuStatus = useSelector(getMenuStatus)
     const elRef = useSmoothScroll();
     const selectedCity = useSelector((state) => state.city.selectedCityTitle)
+    const selectedItemId = useSelector((state) => state.city.selectedMenu)
 
     useEffect(() => {
         if (menuStatus === 'idle') {
             dispatch(getMenu());
         }
     }, [menuStatus, dispatch]);
-
-    useEffect(() => {
-        if (menuItems.menu && menuItems.menu.data && menuItems.menu.data[0] && menuItems.menu.data[0].childs) {
-            setNavChilds(menuItems.menu.data[0].childs);
-        } else {
-            setNavChilds([]);
-        }
-    }, [menuItems]);
 
     return (
         <div>
@@ -44,19 +36,17 @@ function Menu() {
                                     className={style.menuDivs}
                                     key={item.id}
                                     onClick={() => {
-                                        setSelectItemId(item.id)
                                         setNavChilds(item.childs)
                                         dispatch(setSelectedMenu(item.alias))
                                     }}
-
                                 >
                                     <Link className={style.link_style} href={`/${selectedCity}/${item.alias}`}>
                                         <div
-                                            className={selectItemId === item.id ? style.selectItem : style.menuItems}
+                                            className={selectedItemId === item.alias ? style.selectItem : style.menuItems}
                                         >{item.title}
                                         </div  >
                                         <div className={style.containerSpan} >
-                                            <div className={selectItemId === item.id ? style.selectMenuSpan : style.menuSpan} />
+                                            <div className={selectedItemId === item.alias ? style.selectMenuSpan : style.menuSpan} />
                                         </div>
                                     </Link>
                                 </div>
