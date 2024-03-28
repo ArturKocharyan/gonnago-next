@@ -1,9 +1,7 @@
 "use client"
 
-import React, { useEffect, useState,lazy } from "react";
+import React, { useEffect, useState, lazy } from "react";
 import logo from "../../assets/img/image2.svg";
-import search from "../../assets/img/Search2.svg";
-import { RiCloseCircleFill } from "react-icons/ri";
 import style from "./style.module.css";
 import DropDownLang from "./DropDownLang/DropDownLang";
 import CitesDropDown from "./CitesDropDown/CitesDropDown";
@@ -15,25 +13,20 @@ import DrawerSearch from "./DrawerSearch/DrawerSearch";
 const DrawerCitiesLazy = React.lazy(() => import("./DrawerCities/DrawerCtits"));
 import { getCitiesStatus, getCities } from "../../redux/slices/citiesSlice";
 import Image from "next/image";
+import SearchInput from "./SearchInput/SerachInput";
 
 function Navigation() {
   const dispatch = useDispatch();
   const citiesStatus = useSelector(getCitiesStatus);
-  const [inputValue, setInputValue] = useState("");
-  const [inputIsEmpty, setInputIsEmpty] = useState(false);
   const citiesList = useSelector((state) => state.cities);
   const [mobailMenu, setMobailMenu] = useState(false);
-  
+
 
   useEffect(() => {
     if (citiesStatus === "idle") {
       dispatch(getCities());
     }
   }, [citiesStatus, dispatch]);
-
-  useEffect(() => {
-    inputValue.length !== 0 ? setInputIsEmpty(true) : setInputIsEmpty(false);
-  }, [inputValue]);
 
   return (
     <header className={style.mainContainer}>
@@ -45,28 +38,7 @@ function Navigation() {
           <CitesDropDown list={citiesList} />
         </div>
       </div>
-      <div className={style.searchContainer}>
-        <span>
-          <Image src={search} alt="search" />
-        </span>
-        <input
-          placeholder="MOVE"
-          value={inputValue}
-          onChange={(e) => {
-            e.preventDefault();
-            setInputValue(e.target.value);
-          }}
-        />
-        <span
-          onClick={(e) => {
-            e.preventDefault();
-            setInputValue("");
-          }}
-          className={!inputIsEmpty ? style.closeSpanHied : style.closeSpan}
-        >
-          <RiCloseCircleFill />
-        </span>
-      </div>
+      <SearchInput />
       <div className={style.accountContainer}>
         <div className={style.lengContainer}>
           <DropDownLang />

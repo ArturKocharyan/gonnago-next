@@ -1,0 +1,43 @@
+.searchContainer {
+    display: flex;
+    height: 38px;
+    max-width: 29.75rem;
+    width: 100%;
+    border: 1px solid #D0D0D0;
+    justify-content: space-between;
+    border-radius: 35px;
+}
+
+.searchContainer input {
+    border: none;
+    height: 70%;
+    margin-top: 1%;
+    width: 95%;
+    margin-right: 2%;
+}
+
+.searchContainer input:focus {
+    outline: none !important;
+}
+
+.searchContainer span img {
+    display: flex;
+    margin-top: 8px;
+}
+
+.closeSpan {
+    display: flex;
+    margin-top: 11px;
+    margin-right: 5px;
+}
+
+.closeSpanHied {
+    display: none;
+}
+
+
+@media screen and (max-width: 876px) {
+    .searchContainer {
+        display: none;
+    }
+}

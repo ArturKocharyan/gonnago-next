@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "./provaider";
 import Footer from "@/components/Footer/Footer";
@@ -6,7 +6,7 @@ import Navigation from "@/components/Navigation/Navigation";
 import Menu from "@/components/Menu/Menu";
 
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Montserrat({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Gonnago",
