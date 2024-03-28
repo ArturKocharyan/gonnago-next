@@ -11,6 +11,7 @@ import { AiOutlineCheck } from "react-icons/ai";
 import headerCities from "../../../assets/staticCities";
 import useGroupByFirstLetter from "../../../hooks/useGroupByFirstLetter";
 import Link from "next/link";
+import useFilteredCities from "@/hooks/useFilteredCities";
 
 function CitesDropDown({ list }) {
   const [inputValue, setInputValue] = useState("");
@@ -22,19 +23,8 @@ function CitesDropDown({ list }) {
   const groupedCities = useGroupByFirstLetter(citiesData);
   const cityTitle = useSelector((state) => state.city.selectedCity)
   const selectedMenu = useSelector((state) => state.city.selectedMenu)
+  const filteredCities = useFilteredCities(groupedCities, inputValue)
 
-  const filteredCities = Object.entries(groupedCities).reduce(
-    (acc, [letter, cities]) => {
-      const filtered = cities.filter((city) =>
-        city.alias.toLowerCase().includes(inputValue.toLowerCase())
-      );
-      if (filtered.length > 0) {
-        acc[letter] = filtered;
-      }
-      return acc;
-    },
-    {}
-  );
 
   useEffect(() => {
     inputValue.length !== 0 ? setIsActive(true) : setIsActive (false)
@@ -65,6 +55,7 @@ function CitesDropDown({ list }) {
                   onChange={(e) => {
                     setInputValue(e.target.value);
                   }}
+                  className={style.input_style}
                 />
                 <span
                   onClick={(e) => {

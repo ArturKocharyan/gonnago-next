@@ -10,6 +10,7 @@ import headerCities from "../../../assets/staticCities";
 import useGroupByFirstLetter from "../../../hooks/useGroupByFirstLetter";
 import { setSelectedCityTitle } from "@/redux/slices/citySlice";
 import Link from "next/link";
+import useFilteredCities from "@/hooks/useFilteredCities";
 
 
 function DrawerCities({ list }) {
@@ -22,19 +23,7 @@ function DrawerCities({ list }) {
     const groupedCities = useGroupByFirstLetter(citiesData);
     const cityTitle = useSelector((state) => state.city.selectedCity)
     const selectedMenu = useSelector((state) => state.city.selectedMenu)
-
-    const filteredCities = Object.entries(groupedCities).reduce(
-        (acc, [letter, cities]) => {
-            const filtered = cities.filter((city) =>
-                city.alias.toLowerCase().includes(inputValue.toLowerCase())
-            );
-            if (filtered.length > 0) {
-                acc[letter] = filtered;
-            }
-            return acc;
-        },
-        {}
-    );
+    const filteredCities = useFilteredCities(groupedCities, inputValue)
 
     useEffect(() => {
         inputValue.length !== 0 ? setIsActive(true) : setIsActive (false)

@@ -47,12 +47,17 @@
     border-radius: 35px;
 }
 
-.searchContainer input {
+.input_style {
     border: none;
     height: 70%;
     margin-top: 1%;
     width: 98%;
     margin-right: 2%;
+}
+
+.input_style:focus {
+
+    outline: none;
 }
 
 .loopSpan {
