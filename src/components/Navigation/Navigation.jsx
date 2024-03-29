@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import logo from "../../assets/img/image2.svg";
+import logo from "../../assets/img/image21.svg";
 import style from "./style.module.css";
 import DropDownLang from "./DropDownLang/DropDownLang";
 import CitesDropDown from "./CitesDropDown/CitesDropDown";

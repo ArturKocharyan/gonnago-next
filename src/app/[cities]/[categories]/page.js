@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import style from '../style.module.css'
 
 export async function generateMetadata({ params },) {
@@ -6,6 +7,7 @@ export async function generateMetadata({ params },) {
     return {
         title: title,
         description: `This page about ${title} wich is in ${city} `,
+        keywords: `Armenia,${city}, ${title}`,
     }
 }
 

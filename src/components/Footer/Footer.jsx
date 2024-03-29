@@ -8,14 +8,14 @@ import { Divider } from "antd";
 
 function Footer() {
     return (
-        <div className={style.main_container} >
+        <footer className={style.main_container} >
             <div className={style.footer_container} >
                 <Qr />
                 <Contacts />
                 <Divider />
                 <Bottom />
             </div>
-        </div>
+        </footer>
     )
 }
 
