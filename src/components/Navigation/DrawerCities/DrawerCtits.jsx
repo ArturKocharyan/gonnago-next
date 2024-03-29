@@ -11,14 +11,16 @@ import useGroupByFirstLetter from "../../../hooks/useGroupByFirstLetter";
 import { setSelectedCityTitle } from "@/redux/slices/citySlice";
 import Link from "next/link";
 import useFilteredCities from "@/hooks/useFilteredCities";
+import useCities from "@/hooks/useCities";
 
 
-function DrawerCities({ list }) {
+function DrawerCities() {
+    const { citiesStatus, citiesList } = useCities();
+    const citiesData = citiesList.cities.data;
     const [open, setOpen] = useState(false);
     const [inputValue, setInputValue] = useState("");
     const [isActive, setIsActive] = useState(false);
     const [title, setTitle] = useState(headerCities[0].title);
-    const citiesData = list.cities.data;
     const dispatch = useDispatch()
     const groupedCities = useGroupByFirstLetter(citiesData);
     const cityTitle = useSelector((state) => state.city.selectedCity)

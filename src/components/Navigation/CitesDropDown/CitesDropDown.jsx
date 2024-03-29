@@ -12,25 +12,24 @@ import headerCities from "../../../assets/staticCities";
 import useGroupByFirstLetter from "../../../hooks/useGroupByFirstLetter";
 import Link from "next/link";
 import useFilteredCities from "@/hooks/useFilteredCities";
+import useCities from "@/hooks/useCities";
 
-function CitesDropDown({ list }) {
+function CitesDropDown() {
+  const { citiesList } = useCities();
+  const citiesData = citiesList.cities.data;
   const [inputValue, setInputValue] = useState("");
   const [isActive, setIsActive] = useState(false);
   const [title, setTitle] = useState(headerCities[0].title);
   const [visible, setVisible] = useState(false);
   const dispatch = useDispatch()
-  const citiesData = list.cities.data;
   const groupedCities = useGroupByFirstLetter(citiesData);
   const cityTitle = useSelector((state) => state.city.selectedCity)
   const selectedMenu = useSelector((state) => state.city.selectedMenu)
   const filteredCities = useFilteredCities(groupedCities, inputValue)
 
-
   useEffect(() => {
     inputValue.length !== 0 ? setIsActive(true) : setIsActive (false)
   }, [inputValue]);
-
-  
 
   return (
     <div className={style.mainContainer} >
