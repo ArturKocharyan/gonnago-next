@@ -16,7 +16,7 @@ function Navigation() {
     <header className={style.mainContainer}>
       <div className={style.iconContainer}>
         <div className={style.icon}>
-          <Image src={logo} alt="Logo" />
+          <Image src={logo} alt="Gonnago Logo" />
         </div>
         <div className={style.countriesContainer}>
           <CitesDropDown />

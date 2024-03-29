@@ -20,10 +20,8 @@ function Menu() {
     const selectedItemId = useSelector((state) => state.city.selectedMenu)
 
     useEffect(() => {
-        if (menuStatus === 'idle') {
-            dispatch(getMenu());
-        }
-    }, [menuStatus, dispatch]);
+        dispatch(getMenu())
+    }, [])
 
     return (
         <div>
