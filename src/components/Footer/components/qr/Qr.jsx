@@ -18,7 +18,7 @@ function Qr() {
                         Հետևեք շաբաթվա գլխավոր իրադարձություններին
                     </span>
                     <div className={style.input_container} >
-                        <input />
+                        <input placeholder="Էլ. հասցե" />
                         <span>
                             <button className={style.button} >Բաժանորդագրվել</button>
                         </span>
